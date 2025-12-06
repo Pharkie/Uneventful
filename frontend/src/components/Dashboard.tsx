@@ -428,7 +428,7 @@ export function Dashboard() {
                   checked={selectedIds.size === filteredEvents.length && filteredEvents.length > 0}
                   onChange={handleSelectAll}
                   disabled={loading || filteredEvents.length === 0}
-                  className="h-5 w-5 text-red-600 dark:text-red-500 rounded border-slate-300 dark:border-slate-600 focus:ring-red-500 dark:focus:ring-red-400 bg-white dark:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-5 w-5 accent-red-600 rounded border-slate-300 dark:border-slate-600 focus:ring-red-500 dark:focus:ring-red-400 bg-white dark:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Select all events"
                 />
                 <label

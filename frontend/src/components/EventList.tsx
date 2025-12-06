@@ -86,7 +86,7 @@ export function EventList({ events, selectedIds, onToggle, loading, searchQuery 
               type="checkbox"
               checked={selectedIds.has(event.id)}
               onChange={() => onToggle(event.id)}
-              className="mt-1 h-5 w-5 text-red-600 dark:text-red-500 rounded border-slate-300 dark:border-slate-600 focus:ring-red-500 dark:focus:ring-red-400 bg-white dark:bg-slate-700"
+              className="mt-1 h-5 w-5 accent-red-600 rounded border-slate-300 dark:border-slate-600 focus:ring-red-500 dark:focus:ring-red-400 bg-white dark:bg-slate-700"
               onClick={(e) => e.stopPropagation()}
             />
             <div className="flex-1 min-w-0">
