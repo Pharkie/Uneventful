@@ -363,9 +363,7 @@ export function Dashboard() {
                     </button>
                   </div>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                    {selectedIds.size > 0
-                      ? `✓ ${selectedIds.size} event(s) selected`
-                      : `${filteredEvents.length} event(s) found${filteredEvents.length === 100 ? ' (max 100 shown at once)' : ''}`}
+                    {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''} found{filteredEvents.length === 100 ? ' (max 100 shown at once)' : ''}
                   </p>
                 </div>
               </div>
