@@ -31,6 +31,8 @@ export interface CalendarEvent {
     date?: string;
   };
   htmlLink?: string;
+  calendarId: string;
+  calendarColor?: string;
 }
 
 export interface DeleteResult {

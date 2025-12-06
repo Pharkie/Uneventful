@@ -15,7 +15,7 @@ import { analytics } from '../utils/analytics';
 export function Dashboard() {
   const { logout } = useAuth();
   const [calendars, setCalendars] = useState<Calendar[]>([]);
-  const [selectedCalendarId, setSelectedCalendarId] = useState<string>('primary');
+  const [selectedCalendarIds, setSelectedCalendarIds] = useState<Set<string>>(new Set());
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
@@ -45,12 +45,12 @@ export function Dashboard() {
 
       setCalendars(sortedCalendars);
 
-      // Set first calendar as selected, or keep primary if it exists
+      // Initialize with primary calendar selected (or first calendar if no primary)
       const primaryCal = sortedCalendars.find((c: Calendar) => c.primary);
       if (primaryCal) {
-        setSelectedCalendarId(primaryCal.id);
+        setSelectedCalendarIds(new Set([primaryCal.id]));
       } else if (sortedCalendars.length > 0) {
-        setSelectedCalendarId(sortedCalendars[0].id);
+        setSelectedCalendarIds(new Set([sortedCalendars[0].id]));
       }
     } catch (error) {
       console.error('Failed to load calendars:', error);
@@ -64,22 +64,45 @@ export function Dashboard() {
   };
 
   const loadEvents = async () => {
+    if (selectedCalendarIds.size === 0) {
+      setEvents([]);
+      setLoading(false);
+      return;
+    }
+
     try {
       setLoading(true);
-      // Don't send search query to backend - we'll filter on frontend only
-      // Backend only handles date range filtering (Google Calendar API search is unreliable for partials)
-      const { events: fetchedEvents } = await api.getEvents(selectedCalendarId, {
-        maxResults: 100,
-        timeMin,
-        timeMax: timeMax || undefined,
+      const allEvents: CalendarEvent[] = [];
+
+      // Fetch events from all selected calendars
+      for (const calendarId of selectedCalendarIds) {
+        const calendar = calendars.find(c => c.id === calendarId);
+        const { events: fetchedEvents } = await api.getEvents(calendarId, {
+          maxResults: 100,
+          timeMin,
+          timeMax: timeMax || undefined,
+        });
+
+        // Tag each event with its calendar ID and color
+        const taggedEvents = fetchedEvents.map((event: CalendarEvent) => ({
+          ...event,
+          calendarId,
+          calendarColor: calendar?.backgroundColor,
+        }));
+        allEvents.push(...taggedEvents);
+      }
+
+      // Sort merged events by start time
+      allEvents.sort((a, b) => {
+        const aTime = a.start.dateTime || a.start.date || '';
+        const bTime = b.start.dateTime || b.start.date || '';
+        return aTime.localeCompare(bTime);
       });
-      setEvents(fetchedEvents);
+
+      setEvents(allEvents);
 
       // Track events loaded
-      const isPrimary = selectedCalendarId === 'primary';
-      analytics.eventsLoaded(fetchedEvents.length, isPrimary ? 'primary' : 'other');
-
-      // Only clear selections when switching calendars, not when filters change
+      analytics.eventsLoaded(allEvents.length, 'other');
     } catch (error) {
       console.error('Failed to load events:', error);
 
@@ -97,11 +120,16 @@ export function Dashboard() {
     }
   };
 
-  const handleCalendarChange = (newCalendarId: string) => {
-    const isPrimary = newCalendarId === 'primary';
-    analytics.calendarSwitched(isPrimary);
-    setSelectedCalendarId(newCalendarId);
-    setSelectedIds(new Set()); // Clear selections when switching calendars
+  const handleCalendarToggle = (calendarId: string) => {
+    const newSelected = new Set(selectedCalendarIds);
+    if (newSelected.has(calendarId)) {
+      newSelected.delete(calendarId);
+    } else {
+      newSelected.add(calendarId);
+    }
+    setSelectedCalendarIds(newSelected);
+    setSelectedIds(new Set()); // Clear event selections when calendar selection changes
+    analytics.calendarSwitched(newSelected.size === 1);
   };
 
   const handleDateRangeChange = (newTimeMin: string, newTimeMax: string | null) => {
@@ -115,10 +143,10 @@ export function Dashboard() {
   }, []);
 
   useEffect(() => {
-    if (selectedCalendarId) {
+    if (selectedCalendarIds.size > 0 && calendars.length > 0) {
       loadEvents();
     }
-  }, [selectedCalendarId, timeMin, timeMax]);
+  }, [selectedCalendarIds, timeMin, timeMax, calendars]);
 
   // Client-side filtering for search queries (instant, no backend call)
   const filteredEvents = useMemo(() => {
@@ -204,18 +232,36 @@ export function Dashboard() {
       const deleteCount = selectedIds.size;
       analytics.deleteConfirmed(deleteCount);
 
-      const result = await api.deleteEvents(selectedCalendarId, Array.from(selectedIds));
+      // Group selected event IDs by their calendar
+      const eventsByCalendar = new Map<string, string[]>();
+      for (const eventId of selectedIds) {
+        const event = events.find(e => e.id === eventId);
+        if (event) {
+          const list = eventsByCalendar.get(event.calendarId) || [];
+          list.push(eventId);
+          eventsByCalendar.set(event.calendarId, list);
+        }
+      }
 
-      if (result.failed > 0) {
-        analytics.deleteFailed(result.succeeded, result.failed);
+      // Delete from each calendar
+      let totalSucceeded = 0;
+      let totalFailed = 0;
+      for (const [calendarId, eventIds] of eventsByCalendar) {
+        const result = await api.deleteEvents(calendarId, eventIds);
+        totalSucceeded += result.succeeded;
+        totalFailed += result.failed;
+      }
+
+      if (totalFailed > 0) {
+        analytics.deleteFailed(totalSucceeded, totalFailed);
         setToast({
-          message: `Deleted ${result.succeeded} event(s). Failed to delete ${result.failed} event(s).`,
+          message: `Deleted ${totalSucceeded} event(s). Failed to delete ${totalFailed} event(s).`,
           type: 'error'
         });
       } else {
-        analytics.deleteSuccess(result.succeeded);
+        analytics.deleteSuccess(totalSucceeded);
         setToast({
-          message: `Successfully deleted ${result.succeeded} event(s)`,
+          message: `Successfully deleted ${totalSucceeded} event(s)`,
           type: 'success'
         });
       }
@@ -318,20 +364,32 @@ export function Dashboard() {
 
               {/* Filters row */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Calendar selector */}
+                {/* Calendar selector - checkbox list */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-medium text-slate-600 dark:text-slate-400">Calendar:</label>
-                  <select
-                    value={selectedCalendarId}
-                    onChange={(e) => handleCalendarChange(e.target.value)}
-                    className="px-4 py-2 text-sm font-medium bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all"
-                >
-                  {calendars.map((calendar) => (
-                    <option key={calendar.id} value={calendar.id}>
-                      {calendar.summary} {calendar.primary && '(Primary)'}
-                    </option>
-                  ))}
-                </select>
+                  <label className="text-xs font-medium text-slate-600 dark:text-slate-400">Calendars:</label>
+                  <div className="bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg p-2 max-h-32 overflow-y-auto">
+                    {calendars.map((calendar) => (
+                      <label
+                        key={calendar.id}
+                        className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-slate-50 dark:hover:bg-slate-600 cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedCalendarIds.has(calendar.id)}
+                          onChange={() => handleCalendarToggle(calendar.id)}
+                          className="h-4 w-4 text-blue-600 dark:text-blue-500 rounded border-slate-300 dark:border-slate-500 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-slate-600"
+                        />
+                        <span
+                          className="w-3 h-3 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: calendar.backgroundColor || '#3b82f6' }}
+                        />
+                        <span className="text-sm text-slate-700 dark:text-slate-300 truncate">
+                          {calendar.summary}
+                          {calendar.primary && <span className="text-slate-400 dark:text-slate-500 ml-1">(Primary)</span>}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Date range filter */}

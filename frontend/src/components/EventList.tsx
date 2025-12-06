@@ -75,9 +75,10 @@ export function EventList({ events, selectedIds, onToggle, loading, searchQuery 
       {sortedEvents.map((event) => (
         <div
           key={event.id}
-          className={`p-4 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer ${
-            selectedIds.has(event.id) ? 'bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500' : ''
+          className={`p-4 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-l-4 ${
+            selectedIds.has(event.id) ? 'bg-blue-50 dark:bg-blue-900/20' : ''
           }`}
+          style={{ borderLeftColor: event.calendarColor || '#3b82f6' }}
           onClick={() => onToggle(event.id)}
         >
           <div className="flex items-start gap-4">
