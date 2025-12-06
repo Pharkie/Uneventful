@@ -128,13 +128,17 @@ JWT_SECRET=...
 
 ## Future Extensibility
 
-While the MVP focuses on deletion, the architecture supports future features:
-- Filter events by date range, calendar, or search term
+While the core focus is deletion, the architecture supports future features:
 - Edit event details in bulk
 - Export/backup events before deletion
 - Duplicate event detection
 - Recurring event handling
-- Multiple calendar support
+
+**Already Implemented:**
+- ✅ Filter events by date range, calendar, or search term
+- ✅ Multiple calendar simultaneous view with colored chips
+- ✅ Event counts per calendar
+- ✅ Calendar color indicators on events
 
 ## Non-Goals (Keep it Simple)
 

@@ -5,20 +5,23 @@ This document outlines future feature ideas and enhancements for Unplanr. Featur
 ## Recently Completed Features ✅
 
 - ✅ **Google OAuth Authentication** - Secure login with minimal permissions
-- ✅ **Calendar Selection** - View and manage events from multiple calendars (alphabetically sorted)
+- ✅ **Multi-Calendar Simultaneous View** - Select multiple calendars to view events from all at once
+- ✅ **Calendar Chips UI** - Colored chips with event counts, primary calendar first
+- ✅ **Calendar Color Indicators** - Colored left border on events shows source calendar
 - ✅ **Date Range Filtering** - Filter events by date range with presets and custom dates
 - ✅ **Search & Filter** - Real-time search with highlighting in titles, descriptions, and locations
 - ✅ **Accent-Insensitive Search** - "ces" matches "César", "cafe" matches "Café"
 - ✅ **Frontend-Only Search** - Instant filtering, no backend conflicts
 - ✅ **Smart Date Picker** - Auto-sets end date to start + 2 weeks when changing start date
 - ✅ **Bulk Event Deletion** - Delete up to 100 events at once
+- ✅ **Clear Delete Intent UX** - X icons, red highlighting, counts on buttons reinforce destructive actions
 - ✅ **Dark Mode** - Automatic dark/light theme following system preference
 - ✅ **Manual Refresh** - Refresh button to reload calendar feed after external changes
 - ✅ **Session Management** - Graceful token expiration handling with user-friendly messages
 - ✅ **Privacy Analytics** - Umami analytics integration (no cookies, GDPR compliant)
 - ✅ **SEO Optimization** - Meta tags, Open Graph, Twitter Cards, JSON-LD, sitemap
 - ✅ **Mobile-First Design** - Responsive sticky controls for mobile and desktop
-- ✅ **Select All Checkbox** - Indeterminate state support for partial selections
+- ✅ **Select All Checkbox** - Three-state support (none/partial/all) with X and minus icons
 
 ---
 
@@ -185,13 +188,14 @@ This document outlines future feature ideas and enhancements for Unplanr. Featur
 ---
 
 #### 12. Multiple Calendar Operations
-**Status:** Idea
+**Status:** ✅ COMPLETED
 **Complexity:** Medium
 **Description:** Operate on multiple calendars simultaneously.
 
-**Why it's valuable:**
-- Delete events across all calendars at once
-- Common use case: "Delete all events in the next month from ALL calendars"
+**Implemented:**
+- Select multiple calendar chips to view events from all at once
+- Delete events across multiple calendars in a single operation
+- Events tagged with calendar color for easy identification
 
 ---
 
@@ -240,10 +244,11 @@ Remember: Unplanr values **simplicity over features**. Every feature should solv
 
 ## Version History
 
-- **v0.3.0** (Current) - Accent-insensitive search, smart date picker, session management, analytics, SEO, mobile improvements
+- **v1.0.0** (Current) - Multi-calendar simultaneous view, calendar chips with event counts, X icons for delete intent, improved UX
+- **v0.3.0** - Accent-insensitive search, smart date picker, session management, analytics, SEO, mobile improvements
 - **v0.2.0** - Date range filtering, search/filter, calendar selection, dark mode
 - **v0.1.0** - Initial release with basic OAuth and bulk deletion
 
 ---
 
-Last updated: 2025-10-28
+Last updated: 2025-12-06
