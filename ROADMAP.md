@@ -2,26 +2,17 @@
 
 This document outlines future feature ideas and enhancements for Unplanr. Features are organized by priority and complexity.
 
-## Recently Completed Features ✅
+## Completed ✅
 
-- ✅ **Google OAuth Authentication** - Secure login with minimal permissions
-- ✅ **Multi-Calendar Simultaneous View** - Select multiple calendars to view events from all at once
-- ✅ **Calendar Chips UI** - Colored chips with event counts, primary calendar first
-- ✅ **Calendar Color Indicators** - Colored left border on events shows source calendar
-- ✅ **Date Range Filtering** - Filter events by date range with presets and custom dates
-- ✅ **Search & Filter** - Real-time search with highlighting in titles, descriptions, and locations
-- ✅ **Accent-Insensitive Search** - "ces" matches "César", "cafe" matches "Café"
-- ✅ **Frontend-Only Search** - Instant filtering, no backend conflicts
-- ✅ **Smart Date Picker** - Auto-sets end date to start + 2 weeks when changing start date
-- ✅ **Bulk Event Deletion** - Delete up to 100 events at once
-- ✅ **Clear Delete Intent UX** - X icons, red highlighting, counts on buttons reinforce destructive actions
-- ✅ **Dark Mode** - Automatic dark/light theme following system preference
-- ✅ **Manual Refresh** - Refresh button to reload calendar feed after external changes
-- ✅ **Session Management** - Graceful token expiration handling with user-friendly messages
-- ✅ **Privacy Analytics** - Umami analytics integration (no cookies, GDPR compliant)
-- ✅ **SEO Optimization** - Meta tags, Open Graph, Twitter Cards, JSON-LD, sitemap
-- ✅ **Mobile-First Design** - Responsive sticky controls for mobile and desktop
-- ✅ **Select All Checkbox** - Three-state support (none/partial/all) with X and minus icons
+- Google OAuth with minimal permissions
+- Multi-calendar simultaneous view with colored chips
+- Date range filtering with presets
+- Instant search (accent-insensitive)
+- Bulk deletion (up to 100 events)
+- Dark mode (follows system preference)
+- Mobile-first responsive design
+- Session management with graceful expiration
+- Privacy-focused analytics (Umami, no cookies)
 
 ---
 
@@ -188,14 +179,7 @@ This document outlines future feature ideas and enhancements for Unplanr. Featur
 ---
 
 #### 12. Multiple Calendar Operations
-**Status:** ✅ COMPLETED
-**Complexity:** Medium
-**Description:** Operate on multiple calendars simultaneously.
-
-**Implemented:**
-- Select multiple calendar chips to view events from all at once
-- Delete events across multiple calendars in a single operation
-- Events tagged with calendar color for easy identification
+**Status:** ✅ COMPLETED (see "Completed" section above)
 
 ---
 

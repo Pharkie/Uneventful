@@ -128,17 +128,8 @@ JWT_SECRET=...
 
 ## Future Extensibility
 
-While the core focus is deletion, the architecture supports future features:
-- Edit event details in bulk
-- Export/backup events before deletion
-- Duplicate event detection
-- Recurring event handling
-
-**Already Implemented:**
-- ✅ Filter events by date range, calendar, or search term
-- ✅ Multiple calendar simultaneous view with colored chips
-- ✅ Event counts per calendar
-- ✅ Calendar color indicators on events
+Potential future features (not planned):
+- Bulk edit, export/backup, duplicate detection, recurring event handling
 
 ## Non-Goals (Keep it Simple)
 
@@ -247,6 +238,18 @@ git push
 **Additional Notes:**
 - There is NO local development environment - deploy directly to Vercel for testing
 - Never suggest "test locally"
+
+## Color Strategy
+
+**Semantic colors:**
+- **Red** = Destructive/delete intent (selection highlights, delete buttons, X icons)
+- **Blue** = Informational/brand (calendar chips when unselected, links, logo)
+- **Calendar colors** = Identity (chip backgrounds when selected, event left borders)
+
+**Dark mode:**
+- All colors have `dark:` variants
+- Red uses `red-600`/`dark:red-500` (slightly lighter in dark mode)
+- Backgrounds use `slate-800`/`slate-700` in dark mode
 
 ## UI/UX Layout Considerations
 

@@ -6,22 +6,11 @@ Unplanr helps you bulk delete Google Calendar events. Instead of clicking throug
 
 ## How to Use
 
-1. **Visit:** [unplanr.com](https://unplanr.com)
-2. **Sign in** with your Google account
-3. **Select calendars** - Click the colored calendar chips to show/hide events from each calendar (you can select multiple!)
-4. **Filter events** - Use date range presets or search to narrow down
-5. **Select events** - Click events or use "Select All" to mark events for deletion (X icons indicate selection)
-6. **Click** "Delete X events" button
-7. **Confirm** the permanent deletion
-8. **Done!** Your events are removed
-
-## Interface Tips
-
-- **Calendar chips** show event counts when selected (e.g., "Work (12 events)")
-- **Primary calendar** always appears first in the list
-- **Colored left border** on each event shows which calendar it belongs to
-- **X icons** are used throughout to reinforce delete intent
-- **Select All** shows a minus (-) for partial selection, X for all selected
+1. **Sign in** at [unplanr.com](https://unplanr.com) with your Google account
+2. **Select calendars** to view (you can select multiple)
+3. **Filter** by date range or search
+4. **Select events** to delete
+5. **Delete** and confirm
 
 ## Privacy & Security
 
