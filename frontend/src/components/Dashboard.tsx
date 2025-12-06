@@ -362,36 +362,43 @@ export function Dashboard() {
                 </div>
               </div>
 
-              {/* Filters row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Calendar selector - checkbox list */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-medium text-slate-600 dark:text-slate-400">Calendars:</label>
-                  <div className="bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg p-2 max-h-32 overflow-y-auto">
-                    {calendars.map((calendar) => (
-                      <label
+              {/* Calendar selection chips */}
+              <div className="mb-4">
+                <label className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-2 block">
+                  Calendars:
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {calendars.map((calendar) => {
+                    const isSelected = selectedCalendarIds.has(calendar.id);
+                    return (
+                      <button
                         key={calendar.id}
-                        className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-slate-50 dark:hover:bg-slate-600 cursor-pointer"
+                        onClick={() => handleCalendarToggle(calendar.id)}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
+                          isSelected
+                            ? 'text-white shadow-md'
+                            : 'bg-white dark:bg-slate-700 border-2 text-slate-700 dark:text-slate-300 hover:opacity-80'
+                        }`}
+                        style={{
+                          backgroundColor: isSelected ? (calendar.backgroundColor || '#3b82f6') : undefined,
+                          borderColor: !isSelected ? (calendar.backgroundColor || '#3b82f6') : undefined,
+                        }}
                       >
-                        <input
-                          type="checkbox"
-                          checked={selectedCalendarIds.has(calendar.id)}
-                          onChange={() => handleCalendarToggle(calendar.id)}
-                          className="h-4 w-4 text-blue-600 dark:text-blue-500 rounded border-slate-300 dark:border-slate-500 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-slate-600"
-                        />
-                        <span
-                          className="w-3 h-3 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: calendar.backgroundColor || '#3b82f6' }}
-                        />
-                        <span className="text-sm text-slate-700 dark:text-slate-300 truncate">
-                          {calendar.summary}
-                          {calendar.primary && <span className="text-slate-400 dark:text-slate-500 ml-1">(Primary)</span>}
-                        </span>
-                      </label>
-                    ))}
-                  </div>
+                        {isSelected && (
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                        {calendar.summary}
+                        {calendar.primary && <span className="opacity-70 ml-1">(Primary)</span>}
+                      </button>
+                    );
+                  })}
                 </div>
+              </div>
 
+              {/* Filters row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Date range filter */}
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-medium text-slate-600 dark:text-slate-400">Date range:</label>
@@ -421,7 +428,7 @@ export function Dashboard() {
                   checked={selectedIds.size === filteredEvents.length && filteredEvents.length > 0}
                   onChange={handleSelectAll}
                   disabled={loading || filteredEvents.length === 0}
-                  className="h-5 w-5 text-blue-600 dark:text-blue-500 rounded border-slate-300 dark:border-slate-600 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-5 w-5 text-red-600 dark:text-red-500 rounded border-slate-300 dark:border-slate-600 focus:ring-red-500 dark:focus:ring-red-400 bg-white dark:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Select all events"
                 />
                 <label
@@ -451,7 +458,7 @@ export function Dashboard() {
                   {/* Selected count */}
                   <div className="text-center">
                     <div className="flex items-center justify-center gap-2">
-                      <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                      <div className="text-3xl font-bold text-red-600 dark:text-red-400">
                         {selectedIds.size}
                       </div>
                       <div className="text-lg text-slate-600 dark:text-slate-400">
@@ -486,7 +493,7 @@ export function Dashboard() {
             <div className="flex items-center justify-end gap-4 max-w-7xl mx-auto">
               <div className="flex flex-col gap-0.5 text-center">
                 <div className="flex items-center gap-2">
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                  <div className="text-2xl font-bold text-red-600 dark:text-red-400">
                     {selectedIds.size}
                   </div>
                   <div className="text-sm text-slate-600 dark:text-slate-400">
