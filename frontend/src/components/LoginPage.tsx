@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { analytics } from '../utils/analytics';
+import { About } from './About';
 
 export function LoginPage() {
   const { login } = useAuth();
+  const [showAbout, setShowAbout] = useState(false);
 
   const handleLogin = () => {
     analytics.loginClicked();
@@ -36,7 +39,7 @@ export function LoginPage() {
               <Feature icon="🔍" title="View events by date or search" description="Filter down to exactly what you need" />
               <Feature icon="✨" title="Select up to 100 events" description="Checkboxes beat clicking one-by-one" />
               <Feature icon="⚡" title="Delete them all instantly" description="Reclaim your calendar in seconds" />
-              <Feature icon="📚" title="All your calendars" description="Switch between your Google Calendars quickly" />
+              <Feature icon="📚" title="Multiple calendars" description="Switch between your Google Calendars quickly" />
             </div>
 
             {/* Sign In Button */}
@@ -88,6 +91,13 @@ export function LoginPage() {
               </a>
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+              <button
+                onClick={() => setShowAbout(true)}
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                About
+              </button>
+              {' • '}
               <a
                 href="/privacy.html"
                 target="_blank"
@@ -109,6 +119,9 @@ export function LoginPage() {
           </div>
         </div>
       </div>
+
+      {/* About Modal */}
+      {showAbout && <About onClose={() => setShowAbout(false)} />}
     </div>
   );
 }

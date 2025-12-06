@@ -2,7 +2,18 @@ interface AboutProps {
   onClose: () => void;
 }
 
+const formatBuildDate = (isoDate: string): string => {
+  const date = new Date(isoDate);
+  return date.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+};
+
 export function About({ onClose }: AboutProps) {
+  const version = __APP_VERSION__;
+  const buildDate = formatBuildDate(__BUILD_DATE__);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
@@ -131,6 +142,17 @@ export function About({ onClose }: AboutProps) {
               <strong>License:</strong> CC BY-NC-SA 4.0 (Non-commercial use only)
             </p>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+              <strong>Created by:</strong>{' '}
+              <a
+                href="https://github.com/Pharkie"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                Pharkie
+              </a>
+            </p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
               <strong>GitHub:</strong>{' '}
               <a
                 href="https://github.com/Pharkie/Unplanr"
@@ -139,6 +161,15 @@ export function About({ onClose }: AboutProps) {
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
                 github.com/Pharkie/Unplanr
+              </a>
+              {' • '}
+              <a
+                href="https://github.com/Pharkie/Unplanr/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                Report an issue
               </a>
             </p>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
@@ -159,6 +190,9 @@ export function About({ onClose }: AboutProps) {
               >
                 Terms of Service
               </a>
+            </p>
+            <p className="text-xs text-slate-400 dark:text-slate-500 mt-4">
+              v{version} • Built {buildDate}
             </p>
           </section>
         </div>
