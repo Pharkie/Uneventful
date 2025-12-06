@@ -9,9 +9,10 @@ interface EventListProps {
   onToggle: (eventId: string) => void;
   loading: boolean;
   searchQuery?: string;
+  noCalendarsSelected?: boolean;
 }
 
-export function EventList({ events, selectedIds, onToggle, loading, searchQuery = '' }: EventListProps) {
+export function EventList({ events, selectedIds, onToggle, loading, searchQuery = '', noCalendarsSelected = false }: EventListProps) {
   // Sort events to prioritize title matches
   const sortedEvents = useMemo(() => {
     if (!searchQuery) return events;
@@ -44,10 +45,18 @@ export function EventList({ events, selectedIds, onToggle, loading, searchQuery 
           </svg>
         </div>
         <p className="text-slate-600 dark:text-slate-400 font-medium">
-          {searchQuery ? `No events found matching "${searchQuery}"` : 'No events found'}
+          {noCalendarsSelected
+            ? 'No calendars selected'
+            : searchQuery
+              ? `No events found matching "${searchQuery}"`
+              : 'No events found'}
         </p>
         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-          {searchQuery ? 'Try a different search term' : 'Try adjusting your date range or calendar selection'}
+          {noCalendarsSelected
+            ? 'Select at least one calendar above to view events'
+            : searchQuery
+              ? 'Try a different search term'
+              : 'Try adjusting your date range or calendar selection'}
         </p>
       </div>
     );
@@ -82,13 +91,25 @@ export function EventList({ events, selectedIds, onToggle, loading, searchQuery 
           onClick={() => onToggle(event.id)}
         >
           <div className="flex items-start gap-4">
-            <input
-              type="checkbox"
-              checked={selectedIds.has(event.id)}
-              onChange={() => onToggle(event.id)}
-              className="mt-1 h-5 w-5 accent-red-600 rounded border-slate-300 dark:border-slate-600 focus:ring-red-500 dark:focus:ring-red-400 bg-white dark:bg-slate-700"
-              onClick={(e) => e.stopPropagation()}
-            />
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggle(event.id);
+              }}
+              className={`mt-1 h-5 w-5 rounded border-2 flex items-center justify-center transition-colors ${
+                selectedIds.has(event.id)
+                  ? 'bg-red-600 border-red-600 dark:bg-red-500 dark:border-red-500'
+                  : 'bg-white dark:bg-slate-700 border-slate-300 dark:border-slate-600 hover:border-red-400 dark:hover:border-red-400'
+              }`}
+              aria-label={selectedIds.has(event.id) ? 'Deselect event' : 'Select event for deletion'}
+            >
+              {selectedIds.has(event.id) && (
+                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              )}
+            </button>
             <div className="flex-1 min-w-0">
               <h3 className="text-base font-semibold text-slate-900 dark:text-white truncate md:whitespace-normal">
                 {searchQuery ? highlightText(event.summary || '(No title)', searchQuery) : (event.summary || '(No title)')}

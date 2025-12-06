@@ -12,6 +12,7 @@ export interface AuthStatus {
 export interface Calendar {
   id: string;
   summary: string;
+  summaryOverride?: string;
   description?: string;
   primary?: boolean;
   backgroundColor?: string;

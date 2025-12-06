@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { api, AuthError } from '../services/api';
 import type { CalendarEvent, Calendar } from '../types';
@@ -31,16 +31,20 @@ export function Dashboard() {
   // Search filter (instant, client-side only)
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Ref for select all checkbox indeterminate state
-  const selectAllCheckboxRef = useRef<HTMLInputElement>(null);
 
   const loadCalendars = async () => {
     try {
       const fetchedCalendars = await api.getCalendars();
 
-      // Sort calendars alphabetically by summary
+      // Sort calendars: primary first, then alphabetically by display name
       const sortedCalendars = [...fetchedCalendars].sort((a: Calendar, b: Calendar) => {
-        return (a.summary || '').localeCompare(b.summary || '');
+        // Primary calendar always comes first
+        if (a.primary && !b.primary) return -1;
+        if (!a.primary && b.primary) return 1;
+        // Then sort alphabetically by display name (prefer user's renamed version)
+        const aName = a.summaryOverride || a.summary || '';
+        const bName = b.summaryOverride || b.summary || '';
+        return aName.localeCompare(bName);
       });
 
       setCalendars(sortedCalendars);
@@ -145,8 +149,20 @@ export function Dashboard() {
   useEffect(() => {
     if (selectedCalendarIds.size > 0 && calendars.length > 0) {
       loadEvents();
+    } else if (calendars.length > 0) {
+      // Clear events when no calendars selected
+      setEvents([]);
     }
   }, [selectedCalendarIds, timeMin, timeMax, calendars]);
+
+  // Count events per calendar for display in chips
+  const eventCountByCalendar = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const event of events) {
+      counts.set(event.calendarId, (counts.get(event.calendarId) || 0) + 1);
+    }
+    return counts;
+  }, [events]);
 
   // Client-side filtering for search queries (instant, no backend call)
   const filteredEvents = useMemo(() => {
@@ -170,14 +186,6 @@ export function Dashboard() {
     });
   }, [events, searchQuery]);
 
-  // Update select all checkbox indeterminate state
-  useEffect(() => {
-    if (selectAllCheckboxRef.current) {
-      const hasSelection = selectedIds.size > 0;
-      const isFullSelection = selectedIds.size === filteredEvents.length && filteredEvents.length > 0;
-      selectAllCheckboxRef.current.indeterminate = hasSelection && !isFullSelection;
-    }
-  }, [selectedIds, filteredEvents.length]);
 
   const handleSelectAll = () => {
     if (selectedIds.size === filteredEvents.length) {
@@ -365,11 +373,12 @@ export function Dashboard() {
               {/* Calendar selection chips */}
               <div className="mb-4">
                 <label className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-2 block">
-                  Calendars:
+                  Select calendars:
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {calendars.map((calendar) => {
                     const isSelected = selectedCalendarIds.has(calendar.id);
+                    const eventCount = eventCountByCalendar.get(calendar.id) || 0;
                     return (
                       <button
                         key={calendar.id}
@@ -389,8 +398,11 @@ export function Dashboard() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                         )}
-                        {calendar.summary}
+                        {calendar.summaryOverride || calendar.summary}
                         {calendar.primary && <span className="opacity-70 ml-1">(Primary)</span>}
+                        {isSelected && eventCount > 0 && (
+                          <span className="opacity-70">({eventCount} event{eventCount !== 1 ? 's' : ''})</span>
+                        )}
                       </button>
                     );
                   })}
@@ -422,20 +434,35 @@ export function Dashboard() {
 
               {/* Select All checkbox */}
               <div className="flex items-center gap-2">
-                <input
-                  ref={selectAllCheckboxRef}
-                  type="checkbox"
-                  checked={selectedIds.size === filteredEvents.length && filteredEvents.length > 0}
-                  onChange={handleSelectAll}
+                <button
+                  type="button"
+                  onClick={handleSelectAll}
                   disabled={loading || filteredEvents.length === 0}
-                  className="h-5 w-5 accent-red-600 rounded border-slate-300 dark:border-slate-600 focus:ring-red-500 dark:focus:ring-red-400 bg-white dark:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className={`h-5 w-5 rounded border-2 flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                    selectedIds.size === filteredEvents.length && filteredEvents.length > 0
+                      ? 'bg-red-600 border-red-600 dark:bg-red-500 dark:border-red-500'
+                      : selectedIds.size > 0
+                        ? 'bg-red-400 border-red-400 dark:bg-red-400 dark:border-red-400'
+                        : 'bg-white dark:bg-slate-700 border-slate-300 dark:border-slate-600 hover:border-red-400 dark:hover:border-red-400'
+                  }`}
                   aria-label="Select all events"
-                />
+                >
+                  {selectedIds.size > 0 && selectedIds.size < filteredEvents.length && (
+                    <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
+                    </svg>
+                  )}
+                  {selectedIds.size === filteredEvents.length && filteredEvents.length > 0 && (
+                    <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
+                </button>
                 <label
                   className="text-sm font-medium text-slate-700 dark:text-slate-300 select-none cursor-pointer"
                   onClick={() => !loading && filteredEvents.length > 0 && handleSelectAll()}
                 >
-                  Select All
+                  Select All {filteredEvents.length} Events
                 </label>
               </div>
             </div>
@@ -447,6 +474,7 @@ export function Dashboard() {
             searchQuery={searchQuery}
             onToggle={handleToggleEvent}
             loading={loading}
+            noCalendarsSelected={selectedCalendarIds.size === 0}
           />
           </div>
 
@@ -479,7 +507,7 @@ export function Dashboard() {
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
-                    <span>Delete</span>
+                    <span>Delete {selectedIds.size} event{selectedIds.size !== 1 ? 's' : ''}</span>
                   </button>
                 </div>
               </div>
@@ -511,7 +539,7 @@ export function Dashboard() {
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>
-                Delete
+                Delete {selectedIds.size} event{selectedIds.size !== 1 ? 's' : ''}
               </button>
             </div>
           </div>
