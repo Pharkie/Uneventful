@@ -310,7 +310,7 @@ export function Dashboard() {
                 </div>
                 <div>
                   <h1 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                    Unplanr
+                    Uneventful
                   </h1>
                   <p className="text-xs text-slate-500 dark:text-slate-400 -mt-0.5 hidden sm:block">
                     Bulk Google Calendar delete

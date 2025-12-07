@@ -1,10 +1,10 @@
-# Unplanr
+# Uneventful
 
 A simple, elegant web-based tool for deleting multiple Google Calendar events through an intuitive visual interface.
 
 ## The Problem
 
-Google Calendar's native interface makes it tedious to delete multiple events - you have to click through each event individually. Unplanr solves this by providing a visual interface where you can select and delete multiple calendar events at once.
+Google Calendar's native interface makes it tedious to delete multiple events - you have to click through each event individually. Uneventful solves this by providing a visual interface where you can select and delete multiple calendar events at once.
 
 ## Features
 
@@ -31,7 +31,7 @@ Google Calendar's native interface makes it tedious to delete multiple events - 
 ## Project Structure
 
 ```
-Unplanr/
+Uneventful/
 ├── frontend/          # React application
 ├── api/               # Vercel serverless functions
 │   ├── auth/          # Authentication endpoints
@@ -45,7 +45,7 @@ Unplanr/
 
 ## How to Use
 
-Simply visit **[www.unplanr.com](https://www.unplanr.com)** and sign in with your Google account. Select the events you want to delete and click "Delete Selected". That's it!
+Simply visit **[www.uneventful.cc](https://www.uneventful.cc)** and sign in with your Google account. Select the events you want to delete and click "Delete Selected". That's it!
 
 ## For Developers
 
@@ -63,7 +63,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. Note that 
 
 ## Support
 
-If you encounter any issues or have questions, please [open an issue](https://github.com/Pharkie/Unplanr/issues) on GitHub.
+If you encounter any issues or have questions, please [open an issue](https://github.com/Pharkie/Uneventful/issues) on GitHub.
 
 ---
 

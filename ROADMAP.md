@@ -1,6 +1,6 @@
-# Unplanr Roadmap
+# Uneventful Roadmap
 
-This document outlines future feature ideas and enhancements for Unplanr. Features are organized by priority and complexity.
+This document outlines future feature ideas and enhancements for Uneventful. Features are organized by priority and complexity.
 
 ## Completed ✅
 
@@ -199,7 +199,7 @@ This document outlines future feature ideas and enhancements for Unplanr. Featur
 
 ## Non-Goals
 
-These are explicitly **NOT** planned for Unplanr to maintain simplicity:
+These are explicitly **NOT** planned for Uneventful to maintain simplicity:
 
 - ❌ Full calendar management (editing events, creating new events)
 - ❌ Calendar sync functionality
@@ -216,13 +216,13 @@ These are explicitly **NOT** planned for Unplanr to maintain simplicity:
 Have a feature idea? Here's how to suggest it:
 
 1. Check this ROADMAP.md to ensure it's not already listed
-2. Consider if it aligns with Unplanr's core mission: **bulk calendar event management**
+2. Consider if it aligns with Uneventful's core mission: **bulk calendar event management**
 3. Open a GitHub issue with:
    - Clear use case description
    - Why it's valuable
    - Rough complexity estimate (if known)
 
-Remember: Unplanr values **simplicity over features**. Every feature should solve a real problem for bulk calendar event management.
+Remember: Uneventful values **simplicity over features**. Every feature should solve a real problem for bulk calendar event management.
 
 ---
 

@@ -10,7 +10,7 @@ Visit: https://console.cloud.google.com/
 ### 2. Create a New Project
 - Click "Select a project" dropdown at the top
 - Click "NEW PROJECT"
-- Project name: `Unplanr`
+- Project name: `Uneventful`
 - Click "CREATE"
 - Wait a moment, then select the new project
 
@@ -26,11 +26,11 @@ Visit: https://console.cloud.google.com/
 - Click "CREATE"
 
 **App information:**
-- App name: `Unplanr`
+- App name: `Uneventful`
 - User support email: (your email)
 - App logo: (optional - can skip)
-- Application home page: `https://unplanr.vercel.app`
-- Application privacy policy: `https://unplanr.vercel.app` (or skip for now)
+- Application home page: `https://uneventful.vercel.app`
+- Application privacy policy: `https://uneventful.vercel.app` (or skip for now)
 - Application terms of service: (can skip)
 - Authorized domains: `vercel.app`
 - Developer contact: (your email)
@@ -64,11 +64,11 @@ Visit: https://console.cloud.google.com/
 
 **Configure:**
 - Application type: **Web application**
-- Name: `Unplanr Web Client`
+- Name: `Uneventful Web Client`
 
 **Authorized redirect URIs:**
 - Click "+ ADD URI"
-- Enter: `https://unplanr.vercel.app/api/auth/callback`
+- Enter: `https://uneventful.vercel.app/api/auth/callback`
 - Click "CREATE"
 
 ### 6. Save Your Credentials
@@ -100,28 +100,28 @@ vercel --prod
 Wait ~2 minutes for deployment to complete.
 
 ### 9. Test It!
-Visit: https://unplanr.vercel.app
+Visit: https://uneventful.vercel.app
 - Click "Sign in with Google"
 - Authorize the app
 - You should see your calendar events!
 
-## When You Get Your Domain (unplanr.com)
+## When You Get Your Domain (uneventful.com)
 
 You'll need to:
 1. Add the new redirect URI in Google Console:
    - Go to: "APIs & Services" > "Credentials"
    - Edit your OAuth client
-   - Add: `https://unplanr.com/api/auth/callback`
+   - Add: `https://uneventful.com/api/auth/callback`
 
 2. Update Vercel environment variables:
    ```bash
    vercel env rm GOOGLE_REDIRECT_URI production
    vercel env add GOOGLE_REDIRECT_URI production
-   # Enter: https://unplanr.com/api/auth/callback
+   # Enter: https://uneventful.com/api/auth/callback
 
    vercel env rm FRONTEND_URL production
    vercel env add FRONTEND_URL production
-   # Enter: https://unplanr.com
+   # Enter: https://uneventful.com
    ```
 
 3. Redeploy:

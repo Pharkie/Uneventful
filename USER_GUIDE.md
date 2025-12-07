@@ -1,12 +1,12 @@
-# Unplanr - User Guide
+# Uneventful - User Guide
 
-## What is Unplanr?
+## What is Uneventful?
 
-Unplanr helps you bulk delete Google Calendar events. Instead of clicking through events one-by-one in Google Calendar, you can select multiple events and delete them all at once.
+Uneventful helps you bulk delete Google Calendar events. Instead of clicking through events one-by-one in Google Calendar, you can select multiple events and delete them all at once.
 
 ## How to Use
 
-1. **Sign in** at [unplanr.com](https://unplanr.com) with your Google account
+1. **Sign in** at [uneventful.cc](https://uneventful.cc) with your Google account
 2. **Select calendars** to view (you can select multiple)
 3. **Filter** by date range or search
 4. **Select events** to delete
@@ -29,5 +29,5 @@ Unplanr helps you bulk delete Google Calendar events. Instead of clicking throug
 
 ## Need Help?
 
-- Open an issue on [GitHub](https://github.com/Pharkie/Unplanr/issues)
+- Open an issue on [GitHub](https://github.com/Pharkie/Uneventful/issues)
 - Check the [README](README.md) for technical details

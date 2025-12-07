@@ -1,10 +1,10 @@
-# Terms of Service for Unplanr
+# Terms of Service for Uneventful
 
 **Last Updated:** 29 October 2025
 
 ## 1. Introduction and Acceptance of Terms
 
-These Terms of Service ("Terms") constitute a legally binding agreement between you ("User" or "you") and Unplanr ("we", "us", or "our") governing your use of the Unplanr web application at www.unplanr.com ("the Service").
+These Terms of Service ("Terms") constitute a legally binding agreement between you ("User" or "you") and Uneventful ("we", "us", or "our") governing your use of the Uneventful web application at www.uneventful.cc ("the Service").
 
 By accessing or using the Service, you confirm that:
 - You accept and agree to be bound by these Terms
@@ -17,7 +17,7 @@ If you do not agree to these Terms, you must not use the Service.
 ## 2. About the Service
 
 ### 2.1 Description
-Unplanr is a free, open-source web application that provides:
+Uneventful is a free, open-source web application that provides:
 - Access to view your Google Calendar events
 - Tools to filter events by date range and search criteria
 - The ability to select multiple calendar events
@@ -31,14 +31,14 @@ The Service:
 - Is provided free of charge
 
 ### 2.3 Open Source
-Unplanr is licensed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike 4.0). The source code is available at https://github.com/Pharkie/Unplanr.
+Uneventful is licensed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike 4.0). The source code is available at https://github.com/Pharkie/Uneventful.
 
 ## 3. User Accounts and Authentication
 
 ### 3.1 Google Account Requirement
-To use Unplanr, you must:
+To use Uneventful, you must:
 - Possess a valid Google Account
-- Grant Unplanr permission to access your Google Calendar data via Google OAuth 2.0
+- Grant Uneventful permission to access your Google Calendar data via Google OAuth 2.0
 - Comply with Google's Terms of Service
 
 ### 3.2 Your Responsibilities
@@ -49,7 +49,7 @@ You are responsible for:
 - Compliance with all applicable laws when using the Service
 
 ### 3.3 Revocation of Access
-You may revoke Unplanr's access to your Google Calendar at any time through your [Google Account Permissions](https://myaccount.google.com/permissions). This will immediately terminate your ability to use the Service.
+You may revoke Uneventful's access to your Google Calendar at any time through your [Google Account Permissions](https://myaccount.google.com/permissions). This will immediately terminate your ability to use the Service.
 
 ## 4. Acceptable Use
 
@@ -75,21 +75,21 @@ You must not:
 
 ### 5.1 Your Data Rights
 - You retain all ownership rights to your calendar data
-- Unplanr makes no claim to ownership of your data
+- Uneventful makes no claim to ownership of your data
 - See our [Privacy Policy](./PRIVACY.md) for detailed information on data handling
 
 ### 5.2 Event Deletion - Important Warning
-**CRITICAL:** Events deleted through Unplanr are **permanently removed** from your Google Calendar.
+**CRITICAL:** Events deleted through Uneventful are **permanently removed** from your Google Calendar.
 
 You acknowledge and agree that:
-- Deletions are **immediate and irreversible** through Unplanr
+- Deletions are **immediate and irreversible** through Uneventful
 - We cannot recover deleted events
 - Google Calendar may provide a trash/bin feature for recovery (check your Google Calendar settings)
 - **You are solely responsible** for verifying which events you select before confirming deletion
 - We provide confirmation dialogs, but you bear full responsibility for your actions
 
 ### 5.3 No Backup Service
-Unplanr does not provide backup or recovery services. You should maintain your own backups of important calendar data.
+Uneventful does not provide backup or recovery services. You should maintain your own backups of important calendar data.
 
 ## 6. Service Availability and Modifications
 
@@ -143,7 +143,7 @@ By using the Service, you warrant that:
 - All information you provide is accurate and complete
 
 ### 8.2 Indemnity
-You agree to indemnify, defend, and hold harmless Unplanr, its developers, contributors, and affiliates from any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising from:
+You agree to indemnify, defend, and hold harmless Uneventful, its developers, contributors, and affiliates from any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising from:
 - Your use or misuse of the Service
 - Your violation of these Terms
 - Your violation of any rights of another party
@@ -161,7 +161,7 @@ The Service relies on:
 You must comply with [Google's Terms of Service](https://policies.google.com/terms) and [Google API Terms](https://developers.google.com/terms). Google's services are subject to their own terms and privacy policies.
 
 ### 9.2 No Affiliation
-Unplanr is not affiliated with, endorsed by, sponsored by, or associated with Google LLC. Google Calendar and related marks are trademarks of Google LLC.
+Uneventful is not affiliated with, endorsed by, sponsored by, or associated with Google LLC. Google Calendar and related marks are trademarks of Google LLC.
 
 ### 9.3 Third-Party Content
 We are not responsible for:
@@ -172,11 +172,11 @@ We are not responsible for:
 ## 10. Intellectual Property Rights
 
 ### 10.1 Open Source License
-Unplanr is licensed under **CC BY-NC-SA 4.0** (Creative Commons Attribution-NonCommercial-ShareAlike 4.0).
+Uneventful is licensed under **CC BY-NC-SA 4.0** (Creative Commons Attribution-NonCommercial-ShareAlike 4.0).
 
 This means:
 - ✅ You may view, fork, and modify the source code for personal or educational use
-- ✅ You must provide attribution to Unplanr
+- ✅ You must provide attribution to Uneventful
 - ✅ You must share derivative works under the same license
 - ❌ You may NOT use it for commercial purposes without explicit permission
 
@@ -184,14 +184,14 @@ Full license terms: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 ### 10.2 Commercial Use Prohibited
 You may not:
-- Use Unplanr's code, design, name, or branding for commercial purposes
+- Use Uneventful's code, design, name, or branding for commercial purposes
 - Charge fees for access to a derivative work
-- Incorporate Unplanr into a commercial product or service
+- Incorporate Uneventful into a commercial product or service
 
 For commercial licensing enquiries, contact us at canal.parsley796@therapymind.mailer.me.
 
 ### 10.3 Trademarks
-"Unplanr" and associated branding are our intellectual property. You may not use them without permission except as allowed under the CC BY-NC-SA 4.0 license.
+"Uneventful" and associated branding are our intellectual property. You may not use them without permission except as allowed under the CC BY-NC-SA 4.0 license.
 
 ## 11. Termination
 
@@ -257,7 +257,7 @@ However, as the Service is provided free of charge, certain Consumer Rights Act 
 ## 15. Changes to These Terms
 
 ### 15.1 Right to Modify
-We may modify these Terms at any time. Changes will be effective immediately upon posting to www.unplanr.com or the GitHub repository.
+We may modify these Terms at any time. Changes will be effective immediately upon posting to www.uneventful.cc or the GitHub repository.
 
 ### 15.2 Notice of Changes
 We will indicate material changes by:
@@ -270,7 +270,7 @@ Your continued use of the Service after changes are posted constitutes acceptanc
 ## 16. General Provisions
 
 ### 16.1 Entire Agreement
-These Terms, together with our Privacy Policy, constitute the entire agreement between you and Unplanr regarding the Service and supersede all prior agreements.
+These Terms, together with our Privacy Policy, constitute the entire agreement between you and Uneventful regarding the Service and supersede all prior agreements.
 
 ### 16.2 Severability
 If any provision of these Terms is found to be invalid, unlawful, or unenforceable by a court of competent jurisdiction, that provision shall be deemed severed, and the remaining provisions shall remain in full force and effect.
@@ -292,17 +292,17 @@ We shall not be liable for any failure or delay in performing our obligations un
 For questions, concerns, or notices regarding these Terms, please contact us:
 
 **Email:** canal.parsley796@therapymind.mailer.me
-**GitHub:** https://github.com/Pharkie/Unplanr/issues
+**GitHub:** https://github.com/Pharkie/Uneventful/issues
 
 We aim to respond to all enquiries within 5 working days.
 
 ## 18. Acknowledgment and Acceptance
 
-By using Unplanr, you acknowledge that:
+By using Uneventful, you acknowledge that:
 
 ✅ You have read and understood these Terms and our Privacy Policy
 ✅ You agree to be bound by these Terms
-✅ You understand that deleted events cannot be recovered through Unplanr
+✅ You understand that deleted events cannot be recovered through Uneventful
 ✅ You are solely responsible for verifying which events you select for deletion
 ✅ The Service is provided free of charge and "as is"
 ✅ You will comply with all applicable laws when using the Service
@@ -311,7 +311,7 @@ By using Unplanr, you acknowledge that:
 
 **⚠️ IMPORTANT REMINDER**
 
-With great power comes great responsibility. Unplanr gives you the power to delete multiple calendar events at once.
+With great power comes great responsibility. Uneventful gives you the power to delete multiple calendar events at once.
 
 **Always double-check your selection before confirming deletions.**
 
@@ -319,4 +319,4 @@ With great power comes great responsibility. Unplanr gives you the power to dele
 
 ---
 
-**Unplanr is a free, open-source project provided for your convenience. Use it wisely.**
+**Uneventful is a free, open-source project provided for your convenience. Use it wisely.**

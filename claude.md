@@ -1,14 +1,14 @@
-# Unplanr - Project Context
+# Uneventful - Project Context
 
 ## Project Overview
 
-Unplanr is a web-based tool that solves one specific problem: bulk deletion of Google Calendar events through a visual interface. The native Google Calendar interface requires users to delete events one by one, which is tedious and time-consuming. Unplanr provides a better UX for this common task.
+Uneventful is a web-based tool that solves one specific problem: bulk deletion of Google Calendar events through a visual interface. The native Google Calendar interface requires users to delete events one by one, which is tedious and time-consuming. Uneventful provides a better UX for this common task.
 
 ## Core Problem Statement
 
 **Problem:** Deleting multiple Google Calendar events is tedious - you must click through each event individually.
 
-**Solution:** Unplanr provides a visual calendar interface where users can select multiple events and delete them in bulk.
+**Solution:** Uneventful provides a visual calendar interface where users can select multiple events and delete them in bulk.
 
 ## Architecture
 
@@ -120,7 +120,7 @@ api/
 ```
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
-GOOGLE_REDIRECT_URI=https://www.unplanr.com/api/auth/callback
+GOOGLE_REDIRECT_URI=https://www.uneventful.cc/api/auth/callback
 JWT_SECRET=...
 ```
 
@@ -158,7 +158,7 @@ CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike 4.0)
 5. ✅ Event selection UI with bulk operations
 6. ✅ Bulk delete functionality
 7. ✅ Polished UI/UX with dark mode
-8. ✅ Deployed to production at www.unplanr.com
+8. ✅ Deployed to production at www.uneventful.cc
 
 ## Notes for AI Assistants
 

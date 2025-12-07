@@ -25,7 +25,7 @@ export function LoginPage() {
               </svg>
             </div>
             <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent mb-3">
-              Unplanr
+              Uneventful
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400">
               Bulk delete Google Calendar events in seconds
@@ -82,7 +82,7 @@ export function LoginPage() {
             <p className="text-sm text-slate-500 dark:text-slate-400">
               Free & open source •{' '}
               <a
-                href="https://github.com/Pharkie/Unplanr"
+                href="https://github.com/Pharkie/Uneventful"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 dark:text-blue-400 hover:underline"

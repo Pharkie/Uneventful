@@ -1,18 +1,18 @@
-# Privacy Policy for Unplanr
+# Privacy Policy for Uneventful
 
 **Last Updated:** 29 October 2025
 
 ## Introduction
 
-Unplanr ("we", "us", or "our") is committed to protecting your privacy and complying with data protection laws, including the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
+Uneventful ("we", "us", or "our") is committed to protecting your privacy and complying with data protection laws, including the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
 
-This Privacy Policy explains how we collect, use, and safeguard your information when you use our web application at www.unplanr.com.
+This Privacy Policy explains how we collect, use, and safeguard your information when you use our web application at www.uneventful.cc.
 
 ## Data Controller
 
 The data controller responsible for your personal data is:
 
-**Unplanr**
+**Uneventful**
 Email: canal.parsley796@therapymind.mailer.me
 Location: London, United Kingdom
 
@@ -39,7 +39,7 @@ With your explicit permission via Google OAuth, we access:
 - Calendar event titles, descriptions, dates, times, and locations
 - Calendar names and metadata
 - Attendee information (if present in events)
-- Only from calendars you specifically choose to view in Unplanr
+- Only from calendars you specifically choose to view in Uneventful
 
 ### Technical Information
 We automatically collect:
@@ -122,8 +122,8 @@ You have the following rights regarding your personal data:
 ### How to Exercise Your Rights
 
 To exercise any of these rights:
-- **Revoke access:** Visit [Google Account Permissions](https://myaccount.google.com/permissions) and remove Unplanr
-- **Request data deletion:** Sign out of Unplanr (destroys session data immediately)
+- **Revoke access:** Visit [Google Account Permissions](https://myaccount.google.com/permissions) and remove Uneventful
+- **Request data deletion:** Sign out of Uneventful (destroys session data immediately)
 - **Other requests:** Email us at canal.parsley796@therapymind.mailer.me
 
 We will respond to your request within one month as required by UK GDPR.
@@ -139,7 +139,7 @@ Address: Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF
 
 ## Google API Services User Data Policy
 
-Unplanr's use of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+Uneventful's use of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 Specifically:
 - We only request the minimum scopes necessary to provide our service
@@ -164,11 +164,11 @@ We also use **Umami Analytics** - a privacy-focused analytics tool that:
 - Does NOT track users across sites
 - Collects only aggregated, anonymous usage statistics
 
-You can disable cookies in your browser settings, but this will prevent you from using Unplanr.
+You can disable cookies in your browser settings, but this will prevent you from using Uneventful.
 
 ## Children's Privacy
 
-Unplanr is not intended for children under 13 years of age. We do not knowingly collect personal data from children under 13.
+Uneventful is not intended for children under 13 years of age. We do not knowingly collect personal data from children under 13.
 
 If you are a parent or guardian and believe your child has provided us with personal data, please contact us immediately, and we will delete it.
 
@@ -195,7 +195,7 @@ Your continued use of the Service after changes constitutes acceptance of the up
 If you have questions about this Privacy Policy, how we handle your data, or wish to exercise your rights, please contact us:
 
 **Email:** canal.parsley796@therapymind.mailer.me
-**GitHub:** https://github.com/Pharkie/Unplanr/issues
+**GitHub:** https://github.com/Pharkie/Uneventful/issues
 
 We aim to respond to all queries within 5 working days.
 
@@ -203,4 +203,4 @@ We aim to respond to all queries within 5 working days.
 
 This Privacy Policy is governed by the laws of England and Wales.
 
-**Unplanr is provided on a non-commercial basis and is free to use.**
+**Uneventful is provided on a non-commercial basis and is free to use.**

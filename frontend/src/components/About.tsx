@@ -29,7 +29,7 @@ export function About({ onClose }: AboutProps) {
                 </svg>
               </div>
               <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                About Unplanr
+                About Uneventful
               </h2>
             </div>
             <button
@@ -58,7 +58,7 @@ export function About({ onClose }: AboutProps) {
           <section>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">The Solution</h3>
             <p className="text-slate-600 dark:text-slate-400">
-              Unplanr provides a simple, visual interface where you can select multiple calendar events and delete them in bulk. It's designed to save you time when cleaning up your calendar.
+              Uneventful provides a simple, visual interface where you can select multiple calendar events and delete them in bulk. It's designed to save you time when cleaning up your calendar.
             </p>
           </section>
 
@@ -115,7 +115,7 @@ export function About({ onClose }: AboutProps) {
           <section>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Privacy & Security</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-2">
-              Unplanr is designed with privacy in mind:
+              Uneventful is designed with privacy in mind:
             </p>
             <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-400 ml-4">
               <li>• Only requests minimal calendar.events permission</li>
@@ -155,16 +155,16 @@ export function About({ onClose }: AboutProps) {
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
               <strong>GitHub:</strong>{' '}
               <a
-                href="https://github.com/Pharkie/Unplanr"
+                href="https://github.com/Pharkie/Uneventful"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
-                github.com/Pharkie/Unplanr
+                github.com/Pharkie/Uneventful
               </a>
               {' • '}
               <a
-                href="https://github.com/Pharkie/Unplanr/issues"
+                href="https://github.com/Pharkie/Uneventful/issues"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 dark:text-blue-400 hover:underline"

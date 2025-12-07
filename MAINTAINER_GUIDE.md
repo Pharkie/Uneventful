@@ -1,12 +1,12 @@
 # Maintainer Guide
 
-This guide is for maintaining and deploying updates to the live Unplanr instance.
+This guide is for maintaining and deploying updates to the live Uneventful instance.
 
 ## Current Deployment
 
-- **Live URL:** https://unplanr.vercel.app (will be https://unplanr.com)
+- **Live URL:** https://uneventful.vercel.app (will be https://uneventful.com)
 - **Platform:** Vercel (free tier)
-- **Repository:** https://github.com/Pharkie/Unplanr
+- **Repository:** https://github.com/Pharkie/Uneventful
 - **Auto-deploy:** Enabled on main branch
 
 ## Making Updates
@@ -33,24 +33,24 @@ Currently set in Vercel dashboard:
 |----------|---------|---------------|
 | `GOOGLE_CLIENT_ID` | OAuth client ID | (set in Vercel) |
 | `GOOGLE_CLIENT_SECRET` | OAuth client secret | (set in Vercel) |
-| `GOOGLE_REDIRECT_URI` | OAuth callback URL | `https://unplanr.vercel.app/api/auth/callback` |
+| `GOOGLE_REDIRECT_URI` | OAuth callback URL | `https://uneventful.vercel.app/api/auth/callback` |
 | `JWT_SECRET` | Token signing key | (random string) |
-| `FRONTEND_URL` | Frontend URL | `https://unplanr.vercel.app` |
+| `FRONTEND_URL` | Frontend URL | `https://uneventful.vercel.app` |
 | `NODE_ENV` | Environment | `production` |
 
 ### To Update Environment Variables:
 
-1. Go to [Vercel Dashboard](https://vercel.com/adam-knowles-projects/unplanr/settings/environment-variables)
+1. Go to [Vercel Dashboard](https://vercel.com/adam-knowles-projects/uneventful/settings/environment-variables)
 2. Edit the variable
 3. Redeploy: `vercel --prod`
 
-## Setting Up Custom Domain (unplanr.com)
+## Setting Up Custom Domain (uneventful.com)
 
 ### When domain is purchased:
 
 1. **In Vercel Dashboard:**
    - Go to Settings > Domains
-   - Add `unplanr.com` and `www.unplanr.com`
+   - Add `uneventful.com` and `www.uneventful.com`
    - Note the DNS records Vercel provides
 
 2. **In Domain Registrar:**
@@ -58,12 +58,12 @@ Currently set in Vercel dashboard:
    - Add CNAME: `www` → `cname.vercel-dns.com`
 
 3. **Update Environment Variables:**
-   - Change `FRONTEND_URL` to `https://unplanr.com`
-   - Change `GOOGLE_REDIRECT_URI` to `https://unplanr.com/api/auth/callback`
+   - Change `FRONTEND_URL` to `https://uneventful.com`
+   - Change `GOOGLE_REDIRECT_URI` to `https://uneventful.com/api/auth/callback`
 
 4. **Update Google OAuth:**
    - Go to [Google Cloud Console](https://console.cloud.google.com/)
-   - Add `https://unplanr.com/api/auth/callback` to authorized redirect URIs
+   - Add `https://uneventful.com/api/auth/callback` to authorized redirect URIs
 
 5. **Redeploy:**
 ```bash
@@ -74,11 +74,11 @@ vercel --prod
 
 ### Initial Setup (Already Done):
 
-1. Created project: "Unplanr"
+1. Created project: "Uneventful"
 2. Enabled Google Calendar API
 3. Created OAuth 2.0 Client ID
 4. Added authorized redirect URIs:
-   - `https://unplanr.vercel.app/api/auth/callback`
+   - `https://uneventful.vercel.app/api/auth/callback`
 
 ### When Domain Changes:
 
@@ -98,7 +98,7 @@ vercel logs
 ```
 
 ### View in Dashboard:
-https://vercel.com/adam-knowles-projects/unplanr
+https://vercel.com/adam-knowles-projects/uneventful
 
 ## Troubleshooting
 
@@ -164,7 +164,7 @@ cd ../api && npm update
 
 ## Support & Issues
 
-Users can report issues at: https://github.com/Pharkie/Unplanr/issues
+Users can report issues at: https://github.com/Pharkie/Uneventful/issues
 
 ---
 
