@@ -105,23 +105,23 @@ Visit: https://uneventful.vercel.app
 - Authorize the app
 - You should see your calendar events!
 
-## When You Get Your Domain (uneventful.com)
+## When You Get Your Domain (uneventful.cc)
 
 You'll need to:
 1. Add the new redirect URI in Google Console:
    - Go to: "APIs & Services" > "Credentials"
    - Edit your OAuth client
-   - Add: `https://uneventful.com/api/auth/callback`
+   - Add: `https://www.uneventful.cc/api/auth/callback`
 
 2. Update Vercel environment variables:
    ```bash
    vercel env rm GOOGLE_REDIRECT_URI production
    vercel env add GOOGLE_REDIRECT_URI production
-   # Enter: https://uneventful.com/api/auth/callback
+   # Enter: https://www.uneventful.cc/api/auth/callback
 
    vercel env rm FRONTEND_URL production
    vercel env add FRONTEND_URL production
-   # Enter: https://uneventful.com
+   # Enter: https://www.uneventful.cc
    ```
 
 3. Redeploy:

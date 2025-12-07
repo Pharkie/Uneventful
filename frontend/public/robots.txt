@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://unplanr.vercel.app/sitemap.xml
+Sitemap: https://www.uneventful.cc/sitemap.xml

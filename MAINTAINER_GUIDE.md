@@ -4,7 +4,7 @@ This guide is for maintaining and deploying updates to the live Uneventful insta
 
 ## Current Deployment
 
-- **Live URL:** https://uneventful.vercel.app (will be https://uneventful.com)
+- **Live URL:** https://www.uneventful.cc
 - **Platform:** Vercel (free tier)
 - **Repository:** https://github.com/Pharkie/Uneventful
 - **Auto-deploy:** Enabled on main branch
@@ -44,13 +44,13 @@ Currently set in Vercel dashboard:
 2. Edit the variable
 3. Redeploy: `vercel --prod`
 
-## Setting Up Custom Domain (uneventful.com)
+## Setting Up Custom Domain (uneventful.cc)
 
 ### When domain is purchased:
 
 1. **In Vercel Dashboard:**
    - Go to Settings > Domains
-   - Add `uneventful.com` and `www.uneventful.com`
+   - Add `uneventful.cc` and `www.uneventful.cc`
    - Note the DNS records Vercel provides
 
 2. **In Domain Registrar:**
@@ -58,12 +58,12 @@ Currently set in Vercel dashboard:
    - Add CNAME: `www` → `cname.vercel-dns.com`
 
 3. **Update Environment Variables:**
-   - Change `FRONTEND_URL` to `https://uneventful.com`
-   - Change `GOOGLE_REDIRECT_URI` to `https://uneventful.com/api/auth/callback`
+   - Change `FRONTEND_URL` to `https://www.uneventful.cc`
+   - Change `GOOGLE_REDIRECT_URI` to `https://www.uneventful.cc/api/auth/callback`
 
 4. **Update Google OAuth:**
    - Go to [Google Cloud Console](https://console.cloud.google.com/)
-   - Add `https://uneventful.com/api/auth/callback` to authorized redirect URIs
+   - Add `https://www.uneventful.cc/api/auth/callback` to authorized redirect URIs
 
 5. **Redeploy:**
 ```bash
