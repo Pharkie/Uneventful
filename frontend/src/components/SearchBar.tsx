@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 
 interface SearchBarProps {
   value: string;
@@ -6,7 +6,8 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-export function SearchBar({ value, onChange, placeholder = 'Search events (min 3 chars)...' }: SearchBarProps) {
+export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
+  function SearchBar({ value, onChange, placeholder = 'Search events (min 3 chars)...' }, ref) {
   const [localValue, setLocalValue] = useState(value);
 
   const handleChange = (newValue: string) => {
@@ -37,6 +38,7 @@ export function SearchBar({ value, onChange, placeholder = 'Search events (min 3
         </svg>
       </div>
       <input
+        ref={ref}
         type="text"
         value={localValue}
         onChange={(e) => handleChange(e.target.value)}
@@ -66,4 +68,4 @@ export function SearchBar({ value, onChange, placeholder = 'Search events (min 3
       )}
     </div>
   );
-}
+});

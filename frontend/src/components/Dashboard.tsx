@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { api, AuthError } from '../services/api';
 import type { CalendarEvent, Calendar } from '../types';
@@ -8,6 +8,8 @@ import { DateRangeFilter } from './DateRangeFilter';
 import { SearchBar } from './SearchBar';
 import { About } from './About';
 import { Toast } from './Toast';
+import { KeyboardShortcutsModal } from './KeyboardShortcutsModal';
+import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 import { getTodayISO, getDateDaysFromNow } from '../utils/dateHelpers';
 import { stripHtml } from '../utils/stripHtml';
 import { analytics } from '../utils/analytics';
@@ -21,6 +23,7 @@ export function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
+  const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
@@ -30,6 +33,9 @@ export function Dashboard() {
 
   // Search filter (instant, client-side only)
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  // Ref for search bar focus
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
 
   const loadCalendars = async () => {
@@ -294,6 +300,35 @@ export function Dashboard() {
     }
   };
 
+  // Keyboard shortcuts
+  useKeyboardShortcuts({
+    onSelectAll: () => {
+      if (!loading && filteredEvents.length > 0) {
+        handleSelectAll();
+      }
+    },
+    onDelete: () => {
+      if (selectedIds.size > 0 && !showDeleteModal) {
+        handleDeleteModalOpen();
+      }
+    },
+    onEscape: () => {
+      if (showDeleteModal) {
+        setShowDeleteModal(false);
+      } else if (showAbout) {
+        setShowAbout(false);
+      } else if (showKeyboardShortcuts) {
+        setShowKeyboardShortcuts(false);
+      }
+    },
+    onFocusSearch: () => {
+      searchInputRef.current?.focus();
+    },
+    onShowShortcuts: () => {
+      setShowKeyboardShortcuts(true);
+    },
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300">
       {/* Header */}
@@ -319,6 +354,16 @@ export function Dashboard() {
               </div>
             </div>
             <div className="flex items-center gap-1 sm:gap-2">
+              <button
+                onClick={() => setShowKeyboardShortcuts(true)}
+                className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                aria-label="Keyboard shortcuts"
+                title="Keyboard shortcuts (?)"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </button>
               <button
                 onClick={handleAboutOpen}
                 className="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
@@ -423,6 +468,7 @@ export function Dashboard() {
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-medium text-slate-600 dark:text-slate-400">Search:</label>
                   <SearchBar
+                    ref={searchInputRef}
                     value={searchQuery}
                     onChange={handleSearchChange}
                     placeholder="Search events..."
@@ -556,6 +602,19 @@ export function Dashboard() {
 
       {/* About Modal */}
       {showAbout && <About onClose={() => setShowAbout(false)} />}
+
+      {/* Keyboard Shortcuts Modal */}
+      {showKeyboardShortcuts && <KeyboardShortcutsModal onClose={() => setShowKeyboardShortcuts(false)} />}
+
+      {/* Keyboard Shortcuts Hint (desktop only) */}
+      <button
+        onClick={() => setShowKeyboardShortcuts(true)}
+        className="hidden md:flex fixed bottom-4 right-4 items-center gap-1.5 px-3 py-1.5 text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-full shadow-sm hover:shadow transition-all"
+      >
+        <span>Press</span>
+        <kbd className="px-1.5 py-0.5 text-[10px] font-semibold bg-slate-100 dark:bg-slate-700 rounded">?</kbd>
+        <span>for shortcuts</span>
+      </button>
 
       {/* Toast Notification */}
       {toast && (

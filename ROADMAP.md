@@ -13,6 +13,7 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 - Mobile-first responsive design
 - Session management with graceful expiration
 - Privacy-focused analytics (Umami, no cookies)
+- Keyboard shortcuts (press `?` to view)
 
 ---
 
@@ -20,8 +21,8 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ### High Priority (Simple → Medium Complexity)
 
-#### 3. Event Details Expansion
-**Status:** Planned
+#### 1. Event Details Expansion
+**Status:** Idea
 **Complexity:** Medium
 **Description:** Add expandable details panel to show full event information before deletion.
 
@@ -38,8 +39,8 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ---
 
-#### 4. Pagination / Load More Events
-**Status:** Planned
+#### 2. Pagination / Load More Events
+**Status:** Idea
 **Complexity:** Medium
 **Description:** Handle more than 100 events with pagination or "Load More" functionality.
 
@@ -56,8 +57,8 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ---
 
-#### 5. Recurring Event Handling
-**Status:** Planned
+#### 3. Recurring Event Handling
+**Status:** Idea
 **Complexity:** Complex
 **Description:** Add support for deleting entire recurring event series.
 
@@ -75,8 +76,8 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ---
 
-#### 6. Event Preview Before Delete
-**Status:** Planned
+#### 4. Event Preview Before Delete
+**Status:** Idea
 **Complexity:** Simple
 **Description:** Show a detailed summary of selected events before confirming bulk deletion.
 
@@ -95,8 +96,8 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ### Medium Priority (Complex)
 
-#### 7. Undo/Archive Feature
-**Status:** Planned
+#### 5. Undo/Archive Feature
+**Status:** Idea
 **Complexity:** Complex (requires new infrastructure)
 **Description:** Temporary "undo" window or event archive before permanent deletion.
 
@@ -117,21 +118,7 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ### Lower Priority (Nice to Have)
 
-#### 8. Keyboard Shortcuts
-**Status:** Idea
-**Complexity:** Simple
-**Description:** Add keyboard shortcuts for common actions.
-
-**Examples:**
-- `Ctrl/Cmd + A` - Select all events
-- `Delete` - Open delete confirmation modal
-- `Escape` - Close modals
-- `Ctrl/Cmd + F` - Focus search bar
-- `/` - Quick focus search
-
----
-
-#### 9. Export Before Delete
+#### 6. Export Before Delete
 **Status:** Idea
 **Complexity:** Medium
 **Description:** Export selected events to .ics or JSON before deletion.
@@ -148,7 +135,7 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ---
 
-#### 10. Duplicate Event Detection
+#### 7. Duplicate Event Detection
 **Status:** Idea
 **Complexity:** Medium
 **Description:** Identify and highlight potential duplicate events.
@@ -166,7 +153,7 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ---
 
-#### 11. Filter Presets / Saved Filters
+#### 8. Filter Presets / Saved Filters
 **Status:** Idea
 **Complexity:** Simple
 **Description:** Save commonly used filter combinations.
@@ -178,12 +165,7 @@ This document outlines future feature ideas and enhancements for Uneventful. Fea
 
 ---
 
-#### 12. Multiple Calendar Operations
-**Status:** ✅ COMPLETED (see "Completed" section above)
-
----
-
-#### 13. Advanced Filters
+#### 9. Advanced Filters
 **Status:** Idea
 **Complexity:** Medium
 **Description:** More granular filtering options.
@@ -235,4 +217,4 @@ Remember: Uneventful values **simplicity over features**. Every feature should s
 
 ---
 
-Last updated: 2025-12-06
+Last updated: 2025-12-10
